@@ -18,7 +18,7 @@ enum {
 
 static Color colors[] = {
 	[DEFAULT] = { .fg = -1,         .bg = -1, .fg256 = -1, .bg256 = -1, },
-	[BLUE]    = { .fg = COLOR_BLUE, .bg = -1, .fg256 = 68, .bg256 = -1, },
+	[BLUE]    = { .fg = COLOR_WHITE, .bg = COLOR_BLUE, .fg256 = 254, .bg256 = 68, },
 };
 
 #define COLOR(c)        COLOR_PAIR(colors[c].pair)
