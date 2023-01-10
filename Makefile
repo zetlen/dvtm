@@ -30,8 +30,7 @@ debug: clean
 
 clean:
 	@echo cleaning
-	@rm -f dvtm
-	@rm -f dvtm-editor
+	@git clean -dfX
 
 dist: clean
 	@echo creating dist tarball
