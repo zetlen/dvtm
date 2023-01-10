@@ -31,20 +31,20 @@ static Color colors[] = {
 /* curses attributes for the status bar */
 #define BAR_ATTR        (COLOR(BLUE) | A_NORMAL)
 /* characters for beginning and end of status bar message */
-#define BAR_BEGIN       '['
-#define BAR_END         ']'
+#define BAR_BEGIN       ' '
+#define BAR_END         ' '
 /* status bar (command line option -s) position */
 #define BAR_POS         BAR_TOP /* BAR_BOTTOM, BAR_OFF */
 /* whether status bar should be hidden if only one client exists */
-#define BAR_AUTOHIDE    true
+#define BAR_AUTOHIDE    false
 /* master width factor [0.1 .. 0.9] */
 #define MFACT 0.5
 /* number of clients in master area */
 #define NMASTER 1
 /* scroll back buffer size in lines */
-#define SCROLL_HISTORY 500
+#define SCROLL_HISTORY 9999
 /* printf format string for the tag in the status bar */
-#define TAG_SYMBOL   "[%s]"
+#define TAG_SYMBOL   " %s"
 /* curses attributes for the currently selected tags */
 #define TAG_SEL      (COLOR(BLUE) | A_BOLD)
 /* curses attributes for not selected tags which contain no windows */
@@ -53,6 +53,11 @@ static Color colors[] = {
 #define TAG_OCCUPIED (COLOR(BLUE) | A_NORMAL)
 /* curses attributes for not selected tags which with urgent windows */
 #define TAG_URGENT (COLOR(BLUE) | A_NORMAL | A_BLINK)
+
+#define LSYM_TILERIGHT  " \u2520\u2500 "
+#define LSYM_GRID       "\u2500\u253C\u2500 "
+#define LSYM_BSTACK     "\u2501\u252F\u2501 "
+#define LSYM_FULL       "\u258F \u2595 "
 
 const char tags[][8] = { "1", "2", "3", "4", "5" };
 
@@ -63,10 +68,10 @@ const char tags[][8] = { "1", "2", "3", "4", "5" };
 
 /* by default the first layout entry is used */
 static Layout layouts[] = {
-	{ "[]=", tile },
-	{ "+++", grid },
-	{ "TTT", bstack },
-	{ "[ ]", fullscreen },
+	{ LSYM_TILERIGHT, tile },
+	{ LSYM_GRID, grid },
+	{ LSYM_BSTACK, bstack },
+	{ LSYM_FULL, fullscreen },
 };
 
 #define MOD  CTRL('a')
@@ -87,10 +92,10 @@ static KeyBinding bindings[] = {
 	{ { MOD, 'h',          }, { focusleft,      { NULL }                    } },
 	{ { MOD, 'l',          }, { focusright,     { NULL }                    } },
 	{ { MOD, 'k',          }, { focusprev,      { NULL }                    } },
-	{ { MOD, 'f',          }, { setlayout,      { "[]=" }                   } },
-	{ { MOD, 'g',          }, { setlayout,      { "+++" }                   } },
-	{ { MOD, 'b',          }, { setlayout,      { "TTT" }                   } },
-	{ { MOD, 'm',          }, { setlayout,      { "[ ]" }                   } },
+	{ { MOD, 'f',          }, { setlayout,      { LSYM_TILERIGHT }          } },
+	{ { MOD, 'g',          }, { setlayout,      { LSYM_GRID }               } },
+	{ { MOD, 'b',          }, { setlayout,      { LSYM_BSTACK }                   } },
+	{ { MOD, 'm',          }, { setlayout,      { LSYM_FULL }                   } },
 	{ { MOD, ' ',          }, { setlayout,      { NULL }                    } },
 	{ { MOD, 'i',          }, { incnmaster,     { "+1" }                    } },
 	{ { MOD, 'd',          }, { incnmaster,     { "-1" }                    } },
@@ -184,7 +189,7 @@ static const ColorRule colorrules[] = {
 #ifdef CONFIG_MOUSE
 static Button buttons[] = {
 	{ BUTTON1_CLICKED,        { mouse_focus,      { NULL  } } },
-	{ BUTTON1_DOUBLE_CLICKED, { mouse_fullscreen, { "[ ]" } } },
+	{ BUTTON1_DOUBLE_CLICKED, { mouse_fullscreen, { LSYM_FULL } } },
 	{ BUTTON2_CLICKED,        { mouse_zoom,       { NULL  } } },
 	{ BUTTON3_CLICKED,        { mouse_minimize,   { NULL  } } },
 	{ BUTTON4_PRESSED,        { scrollback,       { "-1"  } } },
