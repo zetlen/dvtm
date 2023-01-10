@@ -44,7 +44,7 @@ static Color colors[] = {
 /* scroll back buffer size in lines */
 #define SCROLL_HISTORY 9999
 /* printf format string for the tag in the status bar */
-#define TAG_SYMBOL   " %s"
+#define TAG_SYMBOL   " %s "
 /* curses attributes for the currently selected tags */
 #define TAG_SEL      (COLOR(BLUE) | A_BOLD)
 /* curses attributes for not selected tags which contain no windows */
@@ -59,7 +59,7 @@ static Color colors[] = {
 #define LSYM_BSTACK     "\u2501\u252F\u2501 "
 #define LSYM_FULL       "\u258F \u2595 "
 
-const char tags[][8] = { "1", "2", "3", "4", "5" };
+const char tags[][8] = { "\u2488", "\u2489", "\u248A", "\u248B", "\u248C" };
 
 #include "tile.c"
 #include "grid.c"
