@@ -19,15 +19,15 @@ enum {
 
 static Color colors[] = {
 	[DEFAULT] = { .fg = -1,           .bg = -1, .fg256 = -1,  .bg256 = -1, },
-	[HIGH]    = { .fg = COLOR_YELLOW, .bg = -1, .fg256 = 136, .bg256 = -1, },
-	[LOW]     = { .fg = COLOR_WHITE,  .bg = -1, .fg256 = 136, .bg256 = -1, },
+	[HIGH]    = { .fg = COLOR_YELLOW, .bg = -1, .fg256 = 246, .bg256 = -1, },
+	[LOW]     = { .fg = COLOR_WHITE,  .bg = -1, .fg256 = 249, .bg256 = -1, },
 };
 
 #define COLOR(c)        COLOR_PAIR(colors[c].pair)
 /* curses attributes for the currently focused window */
 #define SELECTED_ATTR   (COLOR(HIGH) | A_NORMAL)
 /* curses attributes for normal (not selected) windows */
-#define NORMAL_ATTR     (COLOR(HIGH) | A_DIM)
+#define NORMAL_ATTR     (COLOR(LOW) | A_DIM)
 /* curses attributes for a window with pending urgent flag */
 #define URGENT_ATTR     NORMAL_ATTR
 /* curses attributes for the status bar */
