@@ -13,23 +13,25 @@
 
 enum {
 	DEFAULT,
-	BLUE,
+	HIGH,
+  LOW
 };
 
 static Color colors[] = {
-	[DEFAULT] = { .fg = -1,         .bg = -1, .fg256 = -1, .bg256 = -1, },
-	[BLUE]    = { .fg = COLOR_WHITE, .bg = COLOR_BLUE, .fg256 = 254, .bg256 = 68, },
+	[DEFAULT] = { .fg = -1,           .bg = -1, .fg256 = -1,  .bg256 = -1, },
+	[HIGH]    = { .fg = COLOR_YELLOW, .bg = -1, .fg256 = 136, .bg256 = -1, },
+	[LOW]     = { .fg = COLOR_WHITE,  .bg = -1, .fg256 = 136, .bg256 = -1, },
 };
 
 #define COLOR(c)        COLOR_PAIR(colors[c].pair)
 /* curses attributes for the currently focused window */
-#define SELECTED_ATTR   (COLOR(BLUE) | A_NORMAL)
+#define SELECTED_ATTR   (COLOR(HIGH) | A_NORMAL)
 /* curses attributes for normal (not selected) windows */
-#define NORMAL_ATTR     (COLOR(DEFAULT) | A_NORMAL)
+#define NORMAL_ATTR     (COLOR(DEFAULT) | A_DIM)
 /* curses attributes for a window with pending urgent flag */
 #define URGENT_ATTR     NORMAL_ATTR
 /* curses attributes for the status bar */
-#define BAR_ATTR        (COLOR(BLUE) | A_NORMAL)
+#define BAR_ATTR        (COLOR(HIGH) | A_NORMAL)
 /* characters for beginning and end of status bar message */
 #define BAR_BEGIN       ' '
 #define BAR_END         ' '
@@ -46,18 +48,18 @@ static Color colors[] = {
 /* printf format string for the tag in the status bar */
 #define TAG_SYMBOL   " %s "
 /* curses attributes for the currently selected tags */
-#define TAG_SEL      (COLOR(BLUE) | A_BOLD)
+#define TAG_SEL      (COLOR(HIGH) | A_BOLD)
 /* curses attributes for not selected tags which contain no windows */
-#define TAG_NORMAL   (COLOR(DEFAULT) | A_NORMAL)
+#define TAG_NORMAL   (COLOR(DEFAULT) | A_DIM)
 /* curses attributes for not selected tags which contain windows */
-#define TAG_OCCUPIED (COLOR(BLUE) | A_NORMAL)
+#define TAG_OCCUPIED (COLOR(HIGH) | A_NORMAL)
 /* curses attributes for not selected tags which with urgent windows */
-#define TAG_URGENT (COLOR(BLUE) | A_NORMAL | A_BLINK)
+#define TAG_URGENT (COLOR(HIGH) | A_NORMAL | A_BLINK)
 
 #define LSYM_TILERIGHT  " \u2520\u2500 "
 #define LSYM_GRID       "\u2500\u253C\u2500 "
 #define LSYM_BSTACK     "\u2501\u252F\u2501 "
-#define LSYM_FULL       "\u258F \u2595 "
+#define LSYM_FULL       "\u203E\u203E\u203E"
 
 const char tags[][8] = { "\u2488", "\u2489", "\u248A", "\u248B", "\u248C" };
 
