@@ -27,7 +27,7 @@ static Color colors[] = {
 /* curses attributes for the currently focused window */
 #define SELECTED_ATTR   (COLOR(HIGH) | A_NORMAL)
 /* curses attributes for normal (not selected) windows */
-#define NORMAL_ATTR     (COLOR(DEFAULT) | A_DIM)
+#define NORMAL_ATTR     (COLOR(HIGH) | A_DIM)
 /* curses attributes for a window with pending urgent flag */
 #define URGENT_ATTR     NORMAL_ATTR
 /* curses attributes for the status bar */
@@ -50,7 +50,7 @@ static Color colors[] = {
 /* curses attributes for the currently selected tags */
 #define TAG_SEL      (COLOR(HIGH) | A_BOLD)
 /* curses attributes for not selected tags which contain no windows */
-#define TAG_NORMAL   (COLOR(DEFAULT) | A_DIM)
+#define TAG_NORMAL   (COLOR(HIGH) | A_NORMAL)
 /* curses attributes for not selected tags which contain windows */
 #define TAG_OCCUPIED (COLOR(HIGH) | A_NORMAL)
 /* curses attributes for not selected tags which with urgent windows */
