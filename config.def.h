@@ -85,8 +85,8 @@ static Layout layouts[] = {
 
 /* you can specifiy at most 3 arguments */
 static KeyBinding bindings[] = {
-	{ { MOD, 'c',          }, { create,         { NULL }                    } },
-	{ { MOD, 'C',          }, { create,         { NULL, NULL, "$CWD" }      } },
+	{ { MOD, 'C',          }, { create,         { NULL }                    } },
+	{ { MOD, 'c',          }, { create,         { NULL, NULL, "$CWD" }      } },
 	{ { MOD, 'x', 'x',     }, { killclient,     { NULL }                    } },
 // { { MOD, 'j',          }, { focusnext,      { NULL }                    } },
 	{ { MOD, 'j',          }, { focusdown,      { NULL }                    } },
