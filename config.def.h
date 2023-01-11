@@ -46,7 +46,7 @@ static Color colors[] = {
 /* scroll back buffer size in lines */
 #define SCROLL_HISTORY 9999
 /* printf format string for the tag in the status bar */
-#define TAG_SYMBOL   " %s "
+#define TAG_SYMBOL   ""
 /* curses attributes for the currently selected tags */
 #define TAG_SEL      (COLOR(HIGH) | A_BOLD)
 /* curses attributes for not selected tags which contain no windows */
@@ -61,7 +61,7 @@ static Color colors[] = {
 #define LSYM_BSTACK     "\u2501\u252F\u2501 "
 #define LSYM_FULL       "\u203E\u203E\u203E"
 
-const char tags[][8] = { "\u2488", "\u2489", "\u248A", "\u248B", "\u248C" };
+const char tags[][8] = { "A", "B" };
 
 #include "tile.c"
 #include "grid.c"
@@ -133,20 +133,12 @@ static KeyBinding bindings[] = {
 	{ { MOD, MOD,          }, { send,           { (const char []){MOD, 0} } } },
 	{ { KEY_SPREVIOUS,     }, { scrollback,     { "-1" }                    } },
 	{ { KEY_SNEXT,         }, { scrollback,     { "1"  }                    } },
-	{ { MOD, '0',          }, { view,           { NULL }                    } },
-	{ { MOD, KEY_F(1),     }, { view,           { tags[0] }                 } },
-	{ { MOD, KEY_F(2),     }, { view,           { tags[1] }                 } },
-	{ { MOD, KEY_F(3),     }, { view,           { tags[2] }                 } },
-	{ { MOD, KEY_F(4),     }, { view,           { tags[3] }                 } },
-	{ { MOD, KEY_F(5),     }, { view,           { tags[4] }                 } },
-	{ { MOD, 'v', '0'      }, { view,           { NULL }                    } },
-	{ { MOD, 'v', '\t',    }, { viewprevtag,    { NULL }                    } },
-	{ { MOD, 't', '0'      }, { tag,            { NULL }                    } },
-	TAGKEYS( '1',                              0)
-	TAGKEYS( '2',                              1)
-	TAGKEYS( '3',                              2)
-	TAGKEYS( '4',                              3)
-	TAGKEYS( '5',                              4)
+	// { { MOD, '0',          }, { view,           { NULL }                    } },
+	// { { MOD, 'v', '0'      }, { view,           { NULL }                    } },
+	// { { MOD, 'v', '\t',    }, { viewprevtag,    { NULL }                    } },
+	// { { MOD, 't', '0'      }, { tag,            { NULL }                    } },
+	// TAGKEYS( 'a',                              0)
+	// TAGKEYS( 'b',                              1)
 };
 
 static const ColorRule colorrules[] = {
